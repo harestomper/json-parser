@@ -24,7 +24,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include "jsonvalue.h"
+#include "json/jsonvalue.h"
 
 #include <memory.h>
 #include <sqlite3.h>
@@ -446,7 +446,7 @@ inline bool Value::empty() const
 }
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-inline bool Value::isUsed() const
+bool Value::isUsed() const
 {
     return m_type != Type::untyped;
 }

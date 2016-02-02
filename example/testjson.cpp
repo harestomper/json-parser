@@ -1,5 +1,5 @@
 /*
- * test-json.cpp
+ * testjson.cpp
  *
  *  Created on: 4 янв. 2016 г.
  *      Author: Voldemar Khramtsov <harestomper@gmail.com>
@@ -27,7 +27,7 @@
 #include <cassert>
 #include <iostream>
 
-#include "json/json.h"
+#include <json/json.h>
 
 int main(int argc, char** argv)
 {
