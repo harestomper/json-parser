@@ -74,13 +74,6 @@ public:
     json::const_iterator begin() const;
     json::iterator end();
     json::const_iterator end() const;
-
-private:
-/*
-    Value*  m_data = null;
-    Uint    m_num_items = 0;
-    Uint    m_allocated_size = 0;
-*/
 };
 
 }  // namespace json

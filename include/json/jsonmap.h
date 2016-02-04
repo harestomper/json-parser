@@ -98,16 +98,6 @@ private:
     static Uint getHashCode(char const* str);
     static bool strEquals(char const* s1, char const* s2);
     static Uint getIndex(Uint bucket_index, Uint item_index);
-
-private:
-/*
-    Value*          m_values = null;
-    Uint*           m_codes = null;
-    char**          m_keys = null;
-    Uint            m_num_buckets = 0;
-    Uint            m_num_items = 0;
-    Uint            m_capacity = 0;
-*/
 };
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
