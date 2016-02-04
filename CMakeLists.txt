@@ -22,8 +22,5 @@ ADD_DEFINITIONS(-pg)
 ADD_DEFINITIONS(-O2)
 ADD_DEFINITIONS(-std=c++11)
 
-#    SET (CMAKE_C_FLAGS  "-g -Wall -Ofast -std=c++11")
-#    SET (CMAKE_CXX_FLAGS "-g -Wall -Ofast -std=c++11 -DCHECK_ARRAY_RANGE -DDEBUG")
-
 ADD_EXECUTABLE (${PROJECT}  ${SOURCES})
 
