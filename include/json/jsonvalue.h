@@ -28,11 +28,7 @@
 #define _JSON_JSONVALUE_H_
 
 #include <initializer_list>
-//#include <memory>
 #include <string>
-//#include "jsonmap.h"
-//#include "jsonarray.h"
-//#include <utility>
 
 #include "json.h"
 
@@ -148,9 +144,9 @@ public:
     void remove(std::string const& key);
     void remove(Uint ix);
 
-    bool get(char const* key, Value const& result);
-    bool get(std::string const& key, Value const& result);
-    bool get(Uint ix, Value const& result);
+    bool get(char const* key, Value& result);
+    bool get(std::string const& key, Value& result);
+    bool get(Uint ix, Value& result);
 
     Value& operator[](char const* key);
     Value& operator[](std::string const& key);
