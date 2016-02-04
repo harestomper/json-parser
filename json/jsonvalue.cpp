@@ -24,7 +24,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include "json/jsonvalue.h"
+#include "jsonvalue.h"
 
 #include <memory.h>
 #include <sqlite3.h>
@@ -446,7 +446,7 @@ inline bool Value::empty() const
 }
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-bool Value::isUsed() const
+inline bool Value::isUsed() const
 {
     return m_type != Type::untyped;
 }
@@ -713,6 +713,95 @@ Map Value::asMap() const
         default:
             return Map();
     }
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+void Value::insert(char const* key, Value const& value)
+{
+    if (not isMap())
+        return;
+
+    as<Map>().insert(key, value);
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+void Value::insert(std::string const& key, Value const& value)
+{
+    if (not isMap())
+        return;
+
+    as<Map>().insert(key, value);
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+void Value::insert(Uint ix, Value const& value)
+{
+    if (not isArray())
+        return;
+
+    as<Array>().insert(ix, value);
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+void Value::remove(char const* key)
+{
+    if (not isMap())
+        return;
+
+    as<Map>().remove(key);
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+void Value::remove(std::string const& key)
+{
+    if (not isMap())
+        return;
+
+    as<Map>().remove(key.c_str());
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+void Value::remove(Uint ix)
+{
+    if (not isArray())
+        return;
+
+    as<Array>().remove(ix);
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+bool Value::get(char const* key, Value const& result)
+{
+    if (isMap() and as<Map>().hasKey(key))
+    {
+        result = as<Map>()[key];
+        return true;
+    }
+
+    return false;
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+bool Value::get(std::string const& key, Value const& result)
+{
+    if (isMap() and as<Map>().hasKey(key.c_str()))
+    {
+        result = as<Map>()[key];
+        return true;
+    }
+
+    return false;
+}
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+bool Value::get(Uint ix, Value const& result)
+{
+    if (isArray() and ix < size())
+    {
+        result = as<Array>()[ix];
+        return true;
+    }
+    return false;
 }
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------

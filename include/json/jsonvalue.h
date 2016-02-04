@@ -140,6 +140,18 @@ public:
     Array       asArray() const;
     Map         asMap() const;
 
+    void insert(char const* key, Value const& value);
+    void insert(std::string const& key, Value const& value);
+    void insert(Uint ix, Value const& value);
+
+    void remove(char const* key);
+    void remove(std::string const& key);
+    void remove(Uint ix);
+
+    bool get(char const* key, Value const& result);
+    bool get(std::string const& key, Value const& result);
+    bool get(Uint ix, Value const& result);
+
     Value& operator[](char const* key);
     Value& operator[](std::string const& key);
     Value& operator[](int ix);
